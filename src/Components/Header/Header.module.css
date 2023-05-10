@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray-700);
+    padding: 3.8rem;
+    gap: 1rem;
+}
+
+.to {
+    color: var(--blue);
+}
+
+.do {
+    color: var(--purple-600);
+}

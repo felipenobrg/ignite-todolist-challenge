@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./App.module.css";
-import logoRocket from "../public/logo-rocket.svg";
 import Empty from "../public/empty.svg";
 import { PlusCircle, Trash } from "phosphor-react";
+import { Header } from "./Components/Header/Header";
 
 function App() {
   const [task, setTask] = useState("");
@@ -25,13 +25,7 @@ function App() {
 
   return (
     <>
-      <header className={styles.header}>
-        <img src={logoRocket} alt="Foguete" />
-        <h1>
-          <span className={styles.to}>to</span>
-          <span className={styles.do}>do</span>
-        </h1>
-      </header>
+      <Header />
 
       <div className={styles.input}>
         <input
@@ -67,10 +61,19 @@ function App() {
               Crie tarefas e organize seus itens a fazer
             </h3>
           </div>
-        ) : ( 
-        taskList.map((task) => (
-          <p className={styles.taskCreate}> <input className={styles.checked} type="radio" />  {task} <Trash size={18} className={styles.trashSvg} /></p>
-        )))}
+        ) : (
+          taskList.map((task) => (
+            <p className={styles.taskCreate}>
+              <input className={styles.checked} type="radio" />
+              {task}
+              <Trash
+                onClick={removeTask}
+                size={18}
+                className={styles.trashSvg}
+              />
+            </p>
+          ))
+        )}
       </div>
     </>
   );
