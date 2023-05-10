@@ -109,3 +109,42 @@
 .h3opacity {
     opacity: 0.4;
 }
+
+.taskCreate {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5rem;
+    background: var(--gray-600);
+    max-width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 19rem;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.checked {
+    border-color: red;
+    width: 1.2rem;
+    height: 18px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 8px;
+    position: relative;
+}
+
+.checked:checked {
+    background-color: #007aff;
+  border-color: #007aff;
+}
+
+
+
+.trashSvg {
+    position: fixed;
+    margin-left: 33rem;
+}
+
+.trashSvg:hover {
+    color: #d63838;
+}
