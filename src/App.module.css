@@ -1,0 +1,111 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray-700);
+    padding: 3.8rem;
+    gap: 1rem;
+}
+
+.to {
+    color: var(--blue);
+}
+
+.do {
+    color: var(--purple-600);
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: -1.8rem;
+}
+
+.inputAdd {
+    max-height: 3rem;
+    min-width: 50%;
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    background: var(--gray-600);
+}
+
+.buttonCreatePost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    background: var(--blue-dark);
+    max-height: 3rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    color: var(--white);
+    font-weight: bold;
+    transition: 0.5ms ease;
+    cursor: pointer;
+}
+
+.buttonCreatePost:hover {
+    background: #025588;
+    cursor: pointer;
+}
+
+.countTasks {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+
+.spanCounterTask {
+    color: var(--white);
+    font-weight: bold;
+    background: var(--gray-500);
+    border-radius: 9px;
+    margin-left: 0.2rem;
+    padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+}
+
+.spanCounterFinished {
+    color: var(--white);
+    font-weight: bold;
+    background: var(--gray-500);
+    border-radius: 9px;
+    margin-left: 0.2rem;
+    padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+}
+
+.taskMade {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.taskFinished {
+    color:  var(--purple-600);
+    font-weight: bold;
+}
+
+.line hr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 19rem;
+    background: var(--gray-600);
+    border-top: 2px solid var(--gray-600);
+    border-bottom: 2px solid var(--gray-600);
+    max-width: 50%;
+}
+
+.nonTasks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1rem;
+}
+
+.h3opacity {
+    opacity: 0.4;
+}
