@@ -1,19 +1,22 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import Empty from "../public/empty.svg";
-import { PlusCircle, Trash } from "phosphor-react";
+import { Trash } from "phosphor-react";
 import { Header } from "./Components/Header/Header";
+import { Input } from "./Components/Input/Input";
 
 function App() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
+  const [isCheckedList, setIsCheckedList] = useState([]);
 
-  const newTask = (event: any) => {
+  const newTask = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTask(event.target.value);
   };
 
   const createNewTask = () => {
     setTaskList([...taskList, task]);
+    setIsCheckedList([...isCheckedList, false]);
     setTask("");
   };
 
@@ -21,40 +24,35 @@ function App() {
     const newTaskList = [...taskList];
     newTaskList.splice(index, 1);
     setTaskList(newTaskList);
+  };  
+
+  const handleCheck = (index: number) => {
+    const newIsCheckedList = [...isCheckedList];
+    newIsCheckedList[index] = !newIsCheckedList[index];
+    setIsCheckedList(newIsCheckedList);
   };
 
   return (
     <>
       <Header />
 
-      <div className={styles.input}>
-        <input
-          className={styles.inputAdd}
-          onChange={newTask}
-          type="text"
-          placeholder="Adicione uma nova tarefa"
-        />
-        <button className={styles.buttonCreatePost} onClick={createNewTask}>
-          Criar <PlusCircle size={20} />{" "}
-        </button>
-      </div>
+      <Input 
+       newTask={newTask} 
+       createNewTask={createNewTask}
+       />
 
       <div className={styles.countTasks}>
         <p className={styles.taskMade}>
-          Tarefas criadas <span className={styles.spanCounterTask}>0</span>
+          Tarefas criadas <span className={styles.spanCounterTask}>{taskList.length}</span>
         </p>
         <p className={styles.taskFinished}>
-          Concluídas <span className={styles.spanCounterFinished}>0</span>
+          Concluídas <span className={styles.spanCounterFinished}>{isCheckedList.filter(isChecked => isChecked).length}</span>
         </p>
-      </div>
-
-      <div className={styles.line}>
-        <hr />
       </div>
 
       <div>
         {taskList.length === 0 ? (
-          <div className={styles.nonTasks}>
+          <div className={styles.noTasks}>
             <img className={styles.emptyImage} src={Empty} alt="Empty Image" />
             <h3>Você ainda não tem tarefas cadastradas</h3>
             <h3 className={styles.h3opacity}>
@@ -62,16 +60,21 @@ function App() {
             </h3>
           </div>
         ) : (
-          taskList.map((task) => (
-            <p className={styles.taskCreate}>
-              <input className={styles.checked} type="radio" />
+          taskList.map((task, index) => (
+            <div className={`${styles.taskCreate} ${isCheckedList[index] ? styles.taskChecked : ''}`}>
+              <input 
+              checked={isCheckedList[index]}
+              onChange={() => handleCheck(index)}
+              className={styles.check} 
+              type="checkbox" 
+              />
               {task}
               <Trash
                 onClick={removeTask}
-                size={18}
+                size={20}
                 className={styles.trashSvg}
               />
-            </p>
+            </div>
           ))
         )}
       </div>
