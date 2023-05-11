@@ -1,32 +1,33 @@
 import { useState } from "react";
-import styles from "./App.module.css";
 import Empty from "../public/empty.svg";
 import { Trash } from "phosphor-react";
 import { Header } from "./Components/Header/Header";
 import { Input } from "./Components/Input/Input";
+import styles from "./App.module.css";
 
-function App() {
-  const [task, setTask] = useState("");
-  const [taskList, setTaskList] = useState([]);
-  const [isCheckedList, setIsCheckedList] = useState([]);
+function App(): JSX.Element {
+  const [task, setTask] = useState<string>("");
+  const [taskList, setTaskList] = useState<string[]>([]);
+  const [isCheckedList, setIsCheckedList] = useState<boolean[]>([]);
 
-  const newTask = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const newTask = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setTask(event.target.value);
   };
 
-  const createNewTask = () => {
+  const createNewTask = (): void => {
     setTaskList([...taskList, task]);
     setIsCheckedList([...isCheckedList, false]);
     setTask("");
   };
 
-  const removeTask = (index: number) => {
+  const removeTask = (index: number): void => {
     const newTaskList = [...taskList];
     newTaskList.splice(index, 1);
+    console.log(index)
     setTaskList(newTaskList);
   };  
 
-  const handleCheck = (index: number) => {
+  const handleCheck = (index: number): void => {
     const newIsCheckedList = [...isCheckedList];
     newIsCheckedList[index] = !newIsCheckedList[index];
     setIsCheckedList(newIsCheckedList);
@@ -70,7 +71,7 @@ function App() {
               />
               {task}
               <Trash
-                onClick={removeTask}
+                onClick={() => removeTask(index)}
                 size={20}
                 className={styles.trashSvg}
               />

@@ -1,12 +1,13 @@
 import { PlusCircle } from 'phosphor-react'
 import styles from './Input.module.css'
+import { ChangeEventHandler, FC, MouseEventHandler } from 'react';
 
 interface InputsProps {
-    newTask: string;
-    createNewTask: void;
+    newTask: ChangeEventHandler<HTMLInputElement>;
+    createNewTask: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Input = ({ newTask, createNewTask }: InputsProps) => {
+export const Input: FC<InputsProps> = ({ newTask, createNewTask }) => {
     return (
         <div className={styles.input}>
         <input
