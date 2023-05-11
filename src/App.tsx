@@ -23,7 +23,6 @@ function App(): JSX.Element {
   const removeTask = (index: number): void => {
     const newTaskList = [...taskList];
     newTaskList.splice(index, 1);
-    console.log(index)
     setTaskList(newTaskList);
   };  
 
@@ -62,7 +61,10 @@ function App(): JSX.Element {
           </div>
         ) : (
           taskList.map((task, index) => (
-            <div className={`${styles.taskCreate} ${isCheckedList[index] ? styles.taskChecked : ''}`}>
+            <div 
+            className={`${styles.taskCreate} ${isCheckedList[index] ? styles.taskChecked : ''}`}
+            key={index}
+            >
               <input 
               checked={isCheckedList[index]}
               onChange={() => handleCheck(index)}
