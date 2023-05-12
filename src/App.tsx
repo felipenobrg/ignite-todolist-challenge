@@ -24,7 +24,7 @@ function App(): JSX.Element {
     const newTaskList = [...taskList];
     newTaskList.splice(index, 1);
     setTaskList(newTaskList);
-  };  
+  };
 
   const handleCheck = (index: number): void => {
     const newIsCheckedList = [...isCheckedList];
@@ -36,17 +36,18 @@ function App(): JSX.Element {
     <>
       <Header />
 
-      <Input 
-       newTask={newTask} 
-       createNewTask={createNewTask}
-       />
+      <Input newTask={newTask} createNewTask={createNewTask} />
 
       <div className={styles.countTasks}>
         <p className={styles.taskMade}>
-          Tarefas criadas <span className={styles.spanCounterTask}>{taskList.length}</span>
+          Tarefas criadas{" "}
+          <span className={styles.spanCounterTask}>{taskList.length}</span>
         </p>
         <p className={styles.taskFinished}>
-          Concluídas <span className={styles.spanCounterFinished}>{isCheckedList.filter(isChecked => isChecked).length}</span>
+          Concluídas{" "}
+          <span className={styles.spanCounterFinished}>
+            {isCheckedList.filter((isChecked) => isChecked).length}
+          </span>
         </p>
       </div>
 
@@ -61,15 +62,17 @@ function App(): JSX.Element {
           </div>
         ) : (
           taskList.map((task, index) => (
-            <div 
-            className={`${styles.taskCreate} ${isCheckedList[index] ? styles.taskChecked : ''}`}
-            key={index}
+            <div
+              className={`${styles.createTask} ${
+                isCheckedList[index] ? styles.checkedTask : ""
+              }`}
+              key={index}
             >
-              <input 
-              checked={isCheckedList[index]}
-              onChange={() => handleCheck(index)}
-              className={styles.check} 
-              type="checkbox" 
+              <input
+                checked={isCheckedList[index]}
+                onChange={() => handleCheck(index)}
+                className={styles.checkbox}
+                type="checkbox"
               />
               {task}
               <Trash

@@ -45,41 +45,63 @@
     opacity: 0.4;
 }
 
-.taskCreate {
+.createTask {
     display: flex;
+    align-items: center; 
     justify-content: flex-start;
-    align-items: center;
-    margin-left: 18.9rem;
+    gap: 1rem;
+    color: var(--white);
     background: var(--gray-600);
-    max-width: 50%;
-    margin-top: 2rem;
+    max-width: 49%;
     padding: 1.2rem;
     border-radius: 9px;
+    margin: 1.8rem auto;
 }
-
-.check {
-    cursor: pointer;
-    margin-right: 8px;
-    height: 1.1rem;
-    width: 1.1rem;
-    color: red;
-}
-
-.check:checked {
-    background: none;
-}
-
-.taskChecked {
+  
+.checkedTesk {
     text-decoration: line-through;
 } 
 
+input[type="checkbox"] {
+    width: 21px;
+    height: 21px;
+    appearance: none;
+    border: 2px solid var(--blue-dark);
+    border-radius: 50%;
+    background-color: var(--gray-500);
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:before {
+    content: "✔";
+    padding: 0.12rem;
+    color: var(--blue);
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+  }
+  
+  input[type="checkbox"]:checked:before {
+    opacity: 1;
+  }
+
 .trashSvg {
     position: absolute;
-    margin-left: 33rem;
     cursor: pointer;
+    margin-left: 33rem;
 }
 
 .trashSvg:hover {
-    color: #d63838;
+    color: var(--danger-500);
 }
 
+@media screen and (max-width: 768px) {
+    .createTask {
+      max-width: 80%;
+      margin-top: 3rem;
+    }
+    
+    .trashSvg {
+      margin-left: 17rem;
+    }
+  }
+  
