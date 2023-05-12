@@ -21,7 +21,7 @@ This project was developed using the following technologies:
 - ReactJS
 - TypeScript
 - CSS Modules
-- 
+
 ---
 
 [My profile in Linkedln](https://www.linkedin.com/in/felipenobrg)
